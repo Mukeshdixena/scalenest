@@ -1,38 +1,237 @@
-.App {
+/* General Styles */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #004aad, #003580);
+  color: white;
   text-align: center;
+  padding: 100px 20px 80px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.hero-content p {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.btn-primary,
+.btn-secondary {
+  background-color: #ffcb05;
+  color: #000;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #ffc107;
+}
+
+.btn-secondary {
+  background-color: #004aad;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-secondary:hover {
+  background-color: #003580;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Section Base */
+.section {
+  padding: 60px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.section p {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: auto;
+  line-height: 1.6;
+}
+
+/* About */
+.about p {
+  margin-top: 10px;
+}
+
+/* Services */
+.our-services .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 700px;
+  margin: 10px auto 40px;
+  line-height: 1.6;
+}
+
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.service-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+.service-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #004aad;
+}
+
+.service-card h3 {
+  color: #222;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-card .read-more {
+  font-weight: 600;
+  color: #004aad;
+  text-decoration: none;
+  border: 1px solid #004aad;
+  padding: 8px 16px;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.service-card .read-more:hover {
+  background-color: #004aad;
+  color: white;
+}
+
+/* Development Process */
+.dev-process h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.process-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.process-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 30px 20px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, border 0.3s ease;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  border-color: #004aad;
+}
+
+.process-card.highlighted {
+  border-color: #00aaff;
+}
+
+.process-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #7048e8;
+}
+
+.process-card h3 {
+  font-size: 1.2rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.process-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Contact */
+.contact {
+  background-color: #eaf1ff;
+  border-radius: 12px;
+  margin-top: 50px;
+}
+
+.contact a {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+/* Footer */
+.footer {
+  background: #222;
+  color: #ccc;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 600px) {
+  .hero-content h1 {
+    font-size: 2.2rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.75rem;
   }
 }
