@@ -27,15 +27,29 @@ function Hero() {
     const [paused, setPaused] = useState(false);
     const touchStartX = useRef(null);
 
-    // Auto-slide
     useEffect(() => {
         const interval = setInterval(() => {
             if (!paused) {
                 setCurrent((prev) => (prev + 1) % slides.length);
             }
-        }, 5000);
+        }, 3000);
+
         return () => clearInterval(interval);
     }, [paused]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'ArrowLeft') {
+                handlePrev();
+            } else if (e.key === 'ArrowRight') {
+                handleNext();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
+
 
     const handleNext = () => {
         setCurrent((prev) => (prev + 1) % slides.length);
@@ -57,8 +71,8 @@ function Hero() {
         const touchEndX = e.changedTouches[0].clientX;
         const diff = touchStartX.current - touchEndX;
 
-        if (diff > 50) handleNext();     // Swipe left
-        else if (diff < -50) handlePrev(); // Swipe right
+        if (diff > 50) handleNext();
+        else if (diff < -50) handlePrev();
     };
 
     const { image, title, subtitle } = slides[current];
@@ -78,12 +92,9 @@ function Hero() {
                     <p>{subtitle}</p>
                 </div>
 
-                {/* Arrows */}
-                <div className="arrow left" onClick={handlePrev}>&#10094;</div>
-                <div className="arrow right" onClick={handleNext}>&#10095;</div>
-
-                {/* Dots */}
-                <div className="dots">
+                {/* Arrows + Dots */}
+                <div className="hero-controls">
+                    <span className="arrow left" onClick={handlePrev}>&#10094;</span>
                     {slides.map((_, index) => (
                         <span
                             key={index}
@@ -91,6 +102,7 @@ function Hero() {
                             onClick={() => handleDotClick(index)}
                         />
                     ))}
+                    <span className="arrow right" onClick={handleNext}>&#10095;</span>
                 </div>
             </div>
         </div>

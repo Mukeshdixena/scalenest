@@ -1,4 +1,3 @@
-/* Hero Base (same as before) */
 .hero-section {
     height: 100vh;
     background-size: cover;
@@ -36,9 +35,10 @@
 .hero-text p {
     font-size: 1.2rem;
     color: #444;
+    line-height: 1.6;
 }
 
-/* Fade-in Animation */
+/* Fade-in effect */
 .fade-in {
     animation: fadeIn 1s ease-in-out;
 }
@@ -55,45 +55,33 @@
     }
 }
 
-/* Arrows */
-.arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 2.5rem;
-    color: #004aad;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 10;
-    background-color: rgba(255, 255, 255, 0.6);
-    border-radius: 50%;
-    transition: background 0.3s;
-}
-
-.arrow:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-}
-
-.arrow.left {
-    left: 20px;
-}
-
-.arrow.right {
-    right: 20px;
-}
-
-/* Dots */
-.dots {
+/* Controls: arrows + dots */
+.hero-controls {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 10px;
+    align-items: center;
+    gap: 15px;
     z-index: 10;
 }
 
-.dot {
+.hero-controls .arrow {
+    font-size: 1.8rem;
+    color: #004aad;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.hero-controls .arrow:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-controls .dot {
     height: 12px;
     width: 12px;
     border-radius: 50%;
@@ -103,7 +91,7 @@
     transition: background 0.3s;
 }
 
-.dot.active {
+.hero-controls .dot.active {
     background: #004aad;
 }
 
@@ -117,8 +105,13 @@
         font-size: 1rem;
     }
 
-    .arrow {
-        font-size: 2rem;
-        padding: 8px;
+    .hero-controls {
+        bottom: 20px;
+        gap: 10px;
+    }
+
+    .hero-controls .arrow {
+        font-size: 1.5rem;
+        padding: 6px 10px;
     }
 }
