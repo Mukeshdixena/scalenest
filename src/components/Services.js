@@ -43,7 +43,7 @@ function Services() {
                         <div className="icon">{service.icon}</div>
                         <h3>{service.title}</h3>
                         <p>{service.desc}</p>
-                        <a href="#" className="read-more">Read More</a>
+                        {/* <a href="#" className="read-more">Read More</a> */}
                     </div>
                 ))}
             </div>
