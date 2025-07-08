@@ -14,7 +14,6 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    /* Ensure it anchors to the viewport */
     width: 100%;
     z-index: 1000;
     padding: 15px 25px;
@@ -44,24 +43,30 @@ html {
     color: #0a0a23;
 }
 
-/* Hamburger */
+/* Clean Hamburger */
 .hamburger {
     display: none;
     flex-direction: column;
-    gap: 5px;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
     cursor: pointer;
+    padding: 0;
+    background: transparent;
+    border: none;
     z-index: 1100;
 }
 
 .bar {
-    height: 3px;
-    width: 25px;
-    background-color: #0a0a23;
-    transition: all 0.3s ease;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .bar.open:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .bar.open:nth-child(2) {
@@ -69,7 +74,7 @@ html {
 }
 
 .bar.open:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Navigation */
@@ -100,7 +105,6 @@ html {
     .nav {
         position: absolute;
         top: 70px;
-        /* matches header height */
         right: 0;
         left: 0;
         flex-direction: column;
@@ -112,7 +116,6 @@ html {
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         display: none;
         width: 100vw;
-        /* ensure full width */
     }
 
     .nav.active {
