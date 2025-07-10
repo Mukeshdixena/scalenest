@@ -1,3 +1,4 @@
+// Hero.js
 import React, { useEffect, useState, useRef } from 'react';
 import './Hero.css';
 import hero1 from '../assets/hero1.jpg';
@@ -8,48 +9,26 @@ const slides = [
     {
         image: hero1,
         title: 'We Code Your Vision into Reality',
-        subtitle: 'Transforming your ideas into tangible reality through expert coding and innovative solutions.'
+        subtitle:
+            'Transforming your ideas into tangible reality through expert coding and innovative solutions.',
     },
     {
         image: hero2,
         title: 'Digital Solutions for Business Growth',
-        subtitle: 'Empowering your business with scalable, efficient and smart software solutions.'
+        subtitle:
+            'Empowering your business with scalable, efficient and smart software solutions.',
     },
     {
         image: hero3,
         title: 'Innovate. Build. Scale.',
-        subtitle: 'From concept to code, we deliver end-to-end digital transformation.'
-    }
+        subtitle:
+            'From concept to code, we deliver end-to-end digital transformation.',
+    },
 ];
 
 function Hero() {
     const [current, setCurrent] = useState(0);
-    const [paused, setPaused] = useState(false);
     const touchStartX = useRef(null);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (!paused) {
-                setCurrent((prev) => (prev + 1) % slides.length);
-            }
-        }, 3000);
-
-        return () => clearInterval(interval);
-    }, [paused]);
-
-    useEffect(() => {
-        const handleKeyDown = (e) => {
-            if (e.key === 'ArrowLeft') {
-                handlePrev();
-            } else if (e.key === 'ArrowRight') {
-                handleNext();
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        return () => window.removeEventListener('keydown', handleKeyDown);
-    }, []);
-
 
     const handleNext = () => {
         setCurrent((prev) => (prev + 1) % slides.length);
@@ -75,14 +54,33 @@ function Hero() {
         else if (diff < -50) handlePrev();
     };
 
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % slides.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (e.key === 'ArrowLeft') {
+                handlePrev();
+            } else if (e.key === 'ArrowRight') {
+                handleNext();
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, []);
+
     const { image, title, subtitle } = slides[current];
 
     return (
         <div
             className="hero-section"
             style={{ backgroundImage: `url(${image})` }}
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
             onTouchStart={handleTouchStart}
             onTouchEnd={handleTouchEnd}
         >
@@ -92,9 +90,10 @@ function Hero() {
                     <p>{subtitle}</p>
                 </div>
 
-                {/* Arrows + Dots */}
                 <div className="hero-controls">
-                    <span className="arrow left" onClick={handlePrev}>&#10094;</span>
+                    <span className="arrow left" onClick={handlePrev}>
+                        &#10094;
+                    </span>
                     {slides.map((_, index) => (
                         <span
                             key={index}
@@ -102,7 +101,9 @@ function Hero() {
                             onClick={() => handleDotClick(index)}
                         />
                     ))}
-                    <span className="arrow right" onClick={handleNext}>&#10095;</span>
+                    <span className="arrow right" onClick={handleNext}>
+                        &#10095;
+                    </span>
                 </div>
             </div>
         </div>

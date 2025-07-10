@@ -70,7 +70,7 @@
 .hero-controls .arrow {
     font-size: 1.8rem;
     color: #004aad;
-    background-color: rgba(255, 255, 255, 0.6);
+    /* background-color: rgba (255, 255, 255, 0.6); */
     border-radius: 50%;
     padding: 8px 12px;
     cursor: pointer;
@@ -78,7 +78,7 @@
 }
 
 .hero-controls .arrow:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(143, 143, 143, 0.9);
 }
 
 .hero-controls .dot {
